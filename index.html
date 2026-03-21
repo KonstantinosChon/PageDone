@@ -93,8 +93,11 @@ section{position:relative;z-index:1}
 .wcard:nth-child(1)::before{background:linear-gradient(90deg,transparent,#3b82f6,transparent)}
 .wcard:nth-child(2)::before{background:linear-gradient(90deg,transparent,#6ee7b7,transparent)}
 .wcard:nth-child(3)::before{background:linear-gradient(90deg,transparent,#fbbf24,transparent)}
-.wcard:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.12)}
+.wcard:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.15)}
 .wcard:hover::before{opacity:1}
+.wcard:nth-child(1):hover{box-shadow:0 0 0 1px rgba(59,130,246,.4),0 0 24px 6px rgba(59,130,246,.25),0 8px 32px rgba(59,130,246,.15)}
+.wcard:nth-child(2):hover{box-shadow:0 0 0 1px rgba(110,231,183,.4),0 0 24px 6px rgba(110,231,183,.25),0 8px 32px rgba(110,231,183,.15)}
+.wcard:nth-child(3):hover{box-shadow:0 0 0 1px rgba(251,191,36,.4),0 0 24px 6px rgba(251,191,36,.25),0 8px 32px rgba(251,191,36,.15)}
 .cicon{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
 .wcard:nth-child(1) .cicon{background:rgba(59,130,246,.12)}
 .wcard:nth-child(2) .cicon{background:rgba(110,231,183,.12)}
