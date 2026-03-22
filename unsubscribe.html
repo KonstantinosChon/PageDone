@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pagedone.gr | Απεγγραφή</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzNiODJmNiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5QRDwvdGV4dD48L3N2Zz4=">
+<meta name="robots" content="noindex, nofollow">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<style>
+:root{--bg:#0a0e1a;--bg2:#0f1525;--bg3:#141b2e;--surface:#1a2238;--border:rgba(255,255,255,0.07);--accent:#3b82f6;--accent2:#6ee7b7;--text:#e8edf5;--muted:#7a8fad;--dim:#4a5a72;--r:14px;--fh:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--fb:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.7;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;background:rgba(10,14,26,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--fh);font-size:1.3rem;font-weight:800;letter-spacing:-.5px;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+
+/* MAIN */
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:120px 1.5rem 60px;position:relative;overflow:hidden}
+
+/* GLOWS */
+.glow{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+.g1{width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,.13) 0%,transparent 70%);top:-10%;left:-15%;animation:d1 14s ease-in-out infinite alternate}
+.g2{width:350px;height:350px;background:radial-gradient(circle,rgba(239,68,68,.09) 0%,transparent 70%);bottom:0%;right:-5%;animation:d2 16s ease-in-out infinite alternate}
+@keyframes d1{from{transform:translate(0,0)}to{transform:translate(40px,30px)}}
+@keyframes d2{from{transform:translate(0,0)}to{transform:translate(-30px,-20px)}}
+
+/* CARD */
+.card{position:relative;z-index:1;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:3rem 2.5rem;max-width:480px;width:100%;text-align:center;animation:fu .6s ease both;box-shadow:0 24px 80px rgba(0,0,0,.4)}
+@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+.sad-face{font-size:4rem;margin-bottom:1.25rem;display:block;animation:bob 3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+h1{font-family:var(--fh);font-size:1.65rem;font-weight:800;letter-spacing:-.5px;line-height:1.2;margin-bottom:.6rem}
+.subtitle{color:var(--muted);font-size:.95rem;font-weight:300;margin-bottom:2.25rem;line-height:1.6}
+
+/* FORM */
+.field{margin-bottom:1.25rem;text-align:left}
+label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem}
+input[type="email"],select{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--text);font-family:var(--fb);font-size:.95rem;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+input[type="email"]::placeholder{color:var(--dim)}
+input[type="email"]:focus,select:focus{border-color:rgba(59,130,246,.5);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237a8fad' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+select option{background:var(--bg3);color:var(--text)}
+
+.btn-unsub{width:100%;margin-top:.5rem;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-family:var(--fh);font-weight:700;font-size:.95rem;padding:.9rem 2rem;border-radius:10px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(239,68,68,.3);transition:transform .2s,box-shadow .2s;letter-spacing:.2px}
+.btn-unsub:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(239,68,68,.4)}
+.btn-unsub:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+/* OTHER TEXTAREA */
+.other-box{overflow:hidden;max-height:0;opacity:0;transition:max-height .35s cubic-bezier(.22,1,.36,1),opacity .3s ease,margin .3s ease;margin-bottom:0}
+.other-box.visible{max-height:160px;opacity:1;margin-bottom:1.25rem}
+textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--text);font-family:var(--fb);font-size:.95rem;outline:none;resize:none;height:90px;transition:border-color .2s,box-shadow .2s;line-height:1.5}
+textarea::placeholder{color:var(--dim)}
+textarea:focus{border-color:rgba(59,130,246,.5);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+
+/* RECAPTCHA */
+.recaptcha-wrap{display:flex;justify-content:center;margin:1rem 0 .5rem}
+
+/* SUCCESS STATE */
+.success-state{display:none;flex-direction:column;align-items:center;gap:.75rem;animation:fu .5s ease both}
+.success-face{font-size:3.5rem;animation:bob 3s ease-in-out infinite}
+.success-title{font-family:var(--fh);font-size:1.3rem;font-weight:800}
+.success-sub{color:var(--muted);font-size:.9rem}
+.back-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;color:var(--accent);font-size:.9rem;font-weight:600;text-decoration:none;transition:opacity .2s}
+.back-link:hover{opacity:.75}
+
+/* FOOTER */
+footer{text-align:center;padding:1.5rem;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+
+@media(max-width:520px){.card{padding:2rem 1.5rem}h1{font-size:1.35rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://pagedone.gr">Page<span>Done</span>.gr</a>
+</nav>
+
+<main>
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+
+  <div class="card" id="card">
+
+    <!-- FORM STATE -->
+    <div id="form-state">
+      <span class="sad-face">😢</span>
+      <h1>Λυπόμαστε που φεύγεις</h1>
+      <p class="subtitle">Συμπλήρωσε τα παρακάτω για να σε αφαιρέσουμε από τη λίστα επικοινωνίας μας. Σεβόμαστε την επιλογή σου.</p>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="το email σου εδώ" required />
+      </div>
+
+      <div class="field">
+        <label for="reason">Λόγος αποχώρησης</label>
+        <select id="reason" onchange="handleReasonChange(this.value)">
+          <option value="" disabled selected>Επίλεξε έναν λόγο...</option>
+          <option value="Δεν επιθυμώ ιστοσελίδα">Δεν επιθυμώ ιστοσελίδα</option>
+          <option value="Έχω ήδη ιστοσελίδα">Έχω ήδη ιστοσελίδα</option>
+          <option value="other">Άλλο</option>
+        </select>
+      </div>
+
+      <!-- "Άλλο" extra box -->
+      <div class="field other-box" id="other-box">
+        <label for="other-text">Πες μας λίγα παραπάνω (προαιρετικό)</label>
+        <textarea id="other-text" placeholder="π.χ. Δεν με ενδιαφέρει πλέον η υπηρεσία..."></textarea>
+      </div>
+
+      <div class="recaptcha-wrap">
+        <div class="g-recaptcha" data-sitekey="6LfBc5MsAAAAANIaQAWAqpW-SPDsg7jJcRDm7LQK" data-theme="dark"></div>
+      </div>
+
+      <button class="btn-unsub" id="unsub-btn" onclick="handleUnsub()">Απεγγραφή</button>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-state" id="success-state">
+      <span class="success-face">🥺</span>
+      <p class="success-title">Ελήφθη η αίτησή σου</p>
+      <p class="success-sub">Θα σε αφαιρέσουμε από τη λίστα μας το συντομότερο δυνατό.<br>Σ' ευχαριστούμε που μας έδωσες την ευκαιρία.</p>
+      <a class="back-link" href="https://pagedone.gr">← Επιστροφή στο pagedone.gr</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  &copy; 2026 <a href="https://pagedone.gr">PageDone.gr</a> — Επαγγελματικές Ιστοσελίδες
+</footer>
+
+<script>
+function handleReasonChange(val) {
+  const box = document.getElementById('other-box');
+  if (val === 'other') {
+    box.classList.add('visible');
+  } else {
+    box.classList.remove('visible');
+    document.getElementById('other-text').value = '';
+  }
+}
+
+function handleUnsub() {
+  const email = document.getElementById('email').value.trim();
+  const reasonEl = document.getElementById('reason');
+  const reason = reasonEl.value;
+  const otherText = document.getElementById('other-text').value.trim();
+  const btn = document.getElementById('unsub-btn');
+
+  // Validate email
+  if (!email || !email.includes('@')) {
+    shake(document.getElementById('email'));
+    document.getElementById('email').focus();
+    return;
+  }
+
+  // Validate reason
+  if (!reason) {
+    shake(reasonEl);
+    return;
+  }
+
+  // Validate reCAPTCHA
+  const recap = grecaptcha.getResponse();
+  if (!recap) {
+    const rw = document.querySelector('.recaptcha-wrap');
+    rw.style.outline = '2px solid rgba(239,68,68,.6)';
+    rw.style.borderRadius = '4px';
+    setTimeout(() => { rw.style.outline = ''; }, 1800);
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Αποστολή...';
+
+  const finalReason = reason === 'other'
+    ? ('Άλλο' + (otherText ? ': ' + otherText : ''))
+    : reason;
+
+  const data = new FormData();
+  data.append('email', email);
+  data.append('reason', finalReason);
+  data.append('g-recaptcha-response', recap);
+  data.append('_subject', 'Αίτημα Απεγγραφής - pagedone.gr');
+
+  fetch('https://formspree.io/f/mojkzjae', {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(r => { showSuccess(); })
+  .catch(() => { showSuccess(); });
+}
+
+function shake(el) {
+  el.style.borderColor = 'rgba(239,68,68,.6)';
+  el.animate([
+    {transform:'translateX(0)'},{transform:'translateX(-6px)'},
+    {transform:'translateX(6px)'},{transform:'translateX(-4px)'},
+    {transform:'translateX(4px)'},{transform:'translateX(0)'}
+  ], {duration:300, easing:'ease'});
+  setTimeout(() => el.style.borderColor = '', 1500);
+}
+
+function showSuccess() {
+  document.getElementById('form-state').style.display = 'none';
+  const s = document.getElementById('success-state');
+  s.style.display = 'flex';
+}
+</script>
+
+</body>
+</html>
