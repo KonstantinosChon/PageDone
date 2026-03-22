@@ -6,7 +6,7 @@
 <title>Pagedone.gr | Απεγγραφή</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzNiODJmNiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5QRDwvdGV4dD48L3N2Zz4=">
 <meta name="robots" content="noindex, nofollow">
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfBc5MsAAAAANIaQAWAqpW-SPDsg7jJcRDm7LQK"></script>
 
 <style>
 :root{--bg:#0a0e1a;--bg2:#0f1525;--bg3:#141b2e;--surface:#1a2238;--border:rgba(255,255,255,0.07);--accent:#3b82f6;--accent2:#6ee7b7;--text:#e8edf5;--muted:#7a8fad;--dim:#4a5a72;--r:14px;--fh:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--fb:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}
@@ -58,9 +58,6 @@ select option{background:var(--bg3);color:var(--text)}
 textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--text);font-family:var(--fb);font-size:.95rem;outline:none;resize:none;height:90px;transition:border-color .2s,box-shadow .2s;line-height:1.5}
 textarea::placeholder{color:var(--dim)}
 textarea:focus{border-color:rgba(59,130,246,.5);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
-
-/* RECAPTCHA */
-.recaptcha-wrap{display:flex;justify-content:center;margin:1rem 0 .5rem}
 
 /* SUCCESS STATE */
 .success-state{display:none;flex-direction:column;align-items:center;gap:.75rem;animation:fu .5s ease both}
@@ -117,10 +114,6 @@ footer a:hover{color:var(--text)}
         <textarea id="other-text" placeholder="π.χ. Δεν με ενδιαφέρει πλέον η υπηρεσία..."></textarea>
       </div>
 
-      <div class="recaptcha-wrap">
-        <div class="g-recaptcha" data-sitekey="6LfBc5MsAAAAANIaQAWAqpW-SPDsg7jJcRDm7LQK" data-theme="dark"></div>
-      </div>
-
       <button class="btn-unsub" id="unsub-btn" onclick="handleUnsub()">Απεγγραφή</button>
     </div>
 
@@ -170,16 +163,6 @@ function handleUnsub() {
     return;
   }
 
-  // Validate reCAPTCHA
-  const recap = grecaptcha.getResponse();
-  if (!recap) {
-    const rw = document.querySelector('.recaptcha-wrap');
-    rw.style.outline = '2px solid rgba(239,68,68,.6)';
-    rw.style.borderRadius = '4px';
-    setTimeout(() => { rw.style.outline = ''; }, 1800);
-    return;
-  }
-
   btn.disabled = true;
   btn.textContent = 'Αποστολή...';
 
@@ -187,19 +170,25 @@ function handleUnsub() {
     ? ('Άλλο' + (otherText ? ': ' + otherText : ''))
     : reason;
 
-  const data = new FormData();
-  data.append('email', email);
-  data.append('reason', finalReason);
-  data.append('g-recaptcha-response', recap);
-  data.append('_subject', 'Αίτημα Απεγγραφής - pagedone.gr');
+  // reCAPTCHA v3 — invisible, runs in background
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6LfBc5MsAAAAANIaQAWAqpW-SPDsg7jJcRDm7LQK', {action: 'unsubscribe'})
+    .then(function(token) {
+      const data = new FormData();
+      data.append('email', email);
+      data.append('reason', finalReason);
+      data.append('g-recaptcha-response', token);
+      data.append('_subject', 'Αίτημα Απεγγραφής - pagedone.gr');
 
-  fetch('https://formspree.io/f/mojkzjae', {
-    method: 'POST',
-    body: data,
-    headers: { 'Accept': 'application/json' }
-  })
-  .then(r => { showSuccess(); })
-  .catch(() => { showSuccess(); });
+      return fetch('https://formspree.io/f/mojkzjae', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+    })
+    .then(() => { showSuccess(); })
+    .catch(() => { showSuccess(); });
+  });
 }
 
 function shake(el) {
